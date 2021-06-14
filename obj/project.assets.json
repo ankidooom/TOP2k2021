@@ -7494,24 +7494,26 @@
     ]
   },
   "packageFolders": {
-    "/home/cedricfortuin/.nuget/packages/": {}
+    "C:\\Users\\ankid\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/c/RvT/TOP2k2021/Top2000.csproj",
+      "projectUniqueName": "C:\\Users\\ankid\\source\\repos\\TOP2000\\TOP2000\\Top2000.csproj",
       "projectName": "Top2000",
-      "projectPath": "/mnt/c/RvT/TOP2k2021/Top2000.csproj",
-      "packagesPath": "/home/cedricfortuin/.nuget/packages/",
-      "outputPath": "/mnt/c/RvT/TOP2k2021/obj/",
+      "projectPath": "C:\\Users\\ankid\\source\\repos\\TOP2000\\TOP2000\\Top2000.csproj",
+      "packagesPath": "C:\\Users\\ankid\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ankid\\source\\repos\\TOP2000\\TOP2000\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/cedricfortuin/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ankid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7581,7 +7583,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.300/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

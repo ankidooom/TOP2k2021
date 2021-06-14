@@ -19,7 +19,7 @@ namespace testje_amk.Controllers
         }
 
         // GET: Lijsts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var top2000Context = _context.Lijsts.Include(l => l.Song).Include(l => l.Top2000jaarNavigation);
             return View(await top2000Context.ToListAsync());

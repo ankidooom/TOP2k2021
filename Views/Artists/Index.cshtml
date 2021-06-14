@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<testje_amk.Models.Artiest>
-
+@using testje_amk.Models; 
 @{
     ViewData["Title"] = "Index";
 }
@@ -9,13 +9,21 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<form asp-controller="Artists" asp-action="Index" method="get">
+    <label> Artiest: </label>
+    <input type="text" name="SearchString" onkeyup="searchForRecord()" />
+    <input type="submit" value="Filter" />
+</form>
+
+<table id="RecordTable" class="table-striped table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Naam)
             </th>
-            <th></th>
+            <th>
+                Test test amk
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +31,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Songs.Count)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Artiestid">Edit</a> |
@@ -33,3 +44,20 @@
 }
     </tbody>
 </table>
+<script>
+    function searchForRecord()
+    {
+        let filter = event.target.value.toUpperCase();
+        let rows = document.querySelector("#RecordTable tbody").rows;
+        for (let i = 0; i < rows.length; i++) {
+            let firstCol = rows[i].cells[1].textContent.toUpperCase();
+            let secondCol = rows[i].cells[2].textContent.toUpperCase();
+            if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    } 
+
+</script>

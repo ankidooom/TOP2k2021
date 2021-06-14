@@ -19,9 +19,17 @@ namespace testje_amk.Controllers
         }
 
         // GET: Artists
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Artiests.ToListAsync());
+            var Artiest = from m in _context.Artiests
+                        select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                Artiest = Artiest.Where(s => s.Naam.Contains(searchString));
+            }
+
+            return View(await Artiest.ToListAsync());
         }
 
         // GET: Artists/Details/5
