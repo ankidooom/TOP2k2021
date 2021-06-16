@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
+
 
 #nullable disable
 
@@ -8,6 +10,12 @@ namespace testje_amk.Models
 {
     public partial class Top2000Context : DbContext
     {
+        
+        // Make configuration var for dynamic configuration
+        private IConfigurationRoot configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .Build();
+
         public Top2000Context()
         {
         }
@@ -34,8 +42,8 @@ namespace testje_amk.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=Top2000;Trusted_Connection=True;MultipleActiveResultSets=true");
+                // Use connectionstring instead of hardcoded string
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             }
         }
 
