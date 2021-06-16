@@ -1,54 +1,56 @@
 ﻿@model IEnumerable<testje_amk.Models.Artiest>
 @using testje_amk.Models; 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Artiesten";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Nieuwe artiest aanmaken</a>
-</p>
-
-<div class="form">
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="floatingInput" placeholder="Pink Floyd" onkeyup="searchForRecord()">
-      <label for="floatingInput">Artiest zoeken</label>
+<div>
+    <h1>Artiesten</h1>
+    
+    <div class="d-flex justify-content-end">
+        <a class="btn col-2 btn-outline-success" asp-action="Create">Nieuwe artiest aanmaken</a>
     </div>
-</div>
-
-<div class="table-responsive">
-    <table id="RecordTable" class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Naam)
-            </th>
-            <th scope="col">
-                Aantal in de lijst
-            </th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var Artiest in Model) {
+    
+    <div class="form">
+        <div class="form-floating my-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Pink Floyd" onkeyup="searchForRecord()">
+          <label for="floatingInput">Artiest zoeken</label>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="RecordTable" class="table table-hover">
+            <thead>
             <tr>
-                <td scope="row">
-                    @Html.DisplayFor(modelItem => Artiest.Naam)
-                </td>
-                <td>
-                    @* @Html.DisplayFor(modelItem => Artiest.Songs) *@
-                    [0-10000]
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@Artiest.Artiestid">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@Artiest.Artiestid">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@Artiest.Artiestid">Delete</a>
-                </td>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Naam)
+                </th>
+                <th scope="col">
+                    Aantal in de lijst
+                </th>
+                <th scope="col"></th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach (var artiest in Model) {
+                <tr>
+                    <td scope="row">
+                        @Html.DisplayFor(modelItem => artiest.Naam)
+                    </td>
+                    <td>
+                        @* @Html.DisplayFor(modelItem => artiest.Songs) *@
+                        [0-10000]
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@artiest.Artiestid">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@artiest.Artiestid">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@artiest.Artiestid">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
@@ -65,5 +67,4 @@
             }
         }
     } 
-
 </script>
