@@ -7,12 +7,15 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nieuwe artiest aanmaken</a>
 </p>
-<form asp-controller="Artists" asp-action="Index" method="get">
-    <label> Artiest: </label>
-    <input type="text" name="SearchString" onkeyup="searchForRecord()" />
-</form>
+
+<div class="form">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Pink Floyd" onkeyup="searchForRecord()">
+      <label for="floatingInput">Artiest zoeken</label>
+    </div>
+</div>
 
 <div class="table-responsive">
     <table id="RecordTable" class="table table-hover">
@@ -24,17 +27,18 @@
             <th scope="col">
                 Aantal in de lijst
             </th>
-            <td scope="col"></td>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         @foreach (var Artiest in Model) {
             <tr>
-                <th scope="row">
+                <td scope="row">
                     @Html.DisplayFor(modelItem => Artiest.Naam)
-                </th>
+                </td>
                 <td>
-                    @Html.DisplayFor(modelItem => Artiest.Songs)
+                    @* @Html.DisplayFor(modelItem => Artiest.Songs) *@
+                    [0-10000]
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@Artiest.Artiestid">Edit</a> |
