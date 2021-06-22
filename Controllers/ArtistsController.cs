@@ -53,7 +53,7 @@ namespace testje_amk.Controllers
                     artiesten = artiesten.OrderBy(s => s.Naam);
                     break;
             }
-            return View(artists.ToPagedList(pageNumber, 10));
+            return View(artists.ToPagedList(pageNumber, 100));
         }
 
         // GET: Artists/Details/5
