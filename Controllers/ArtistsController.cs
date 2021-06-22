@@ -22,11 +22,9 @@ namespace testje_amk.Controllers
         }
 
         // GET: Artists
-        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.CurrentFilter = searchString;
 
             // pagina's
@@ -42,18 +40,7 @@ namespace testje_amk.Controllers
                 artiesten = artiesten.Where(s => s.Naam.Contains(searchString)
                                        || s.Naam.Contains(searchString));
             }
-
-            // filteren van de Data
-            switch (sortOrder)
-            {
-                case "name_desc": // naam decending
-                    artiesten = artiesten.OrderByDescending(s => s.Naam);
-                    break;
-                default:  // Naam ascending 
-                    artiesten = artiesten.OrderBy(s => s.Naam);
-                    break;
-            }
-            return View(artists.ToPagedList(pageNumber, 100));
+            return View(artists.ToPagedList(pageNumber, 50));
         }
 
         // GET: Artists/Details/5
