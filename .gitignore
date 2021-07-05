@@ -4,3 +4,4 @@ appsettings.json
 *.vscode/*
 bin/*
 obj/*
+database.sqlite
