@@ -12,9 +12,9 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  :root {
-    scroll-behavior: smooth;
-  }
+    :root {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
@@ -422,5 +422,6 @@ progress {
 [hidden] {
   display: none !important;
 }
+
 
 /*# sourceMappingURL=bootstrap-reboot.css.map */

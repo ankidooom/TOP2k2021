@@ -1,11 +1,11 @@
-﻿@model IEnumerable<testje_amk.Models.Artiest>
+@model IEnumerable<testje_amk.Models.Artiest>
 @{
     ViewData["Title"] = "Artiesten";
 }
+<link rel="stylesheet" href="~/css/PagedList.css">
 
 <div>
     <h1>Artiesten</h1>
-
     <div class="d-flex justify-content-end">
         <a class="btn col-md-2 btn-outline-success" asp-action="Create">Nieuwe artiest aanmaken</a>
     </div>
@@ -52,15 +52,35 @@
                         </div>
                     </td>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var artiest in Model)
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => artiest.Naam)
+                        </td>
+                        <td>
+                            @* @Html.DisplayFor(modelItem => artiest.Songs) *@
+                            [0-10000]
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@artiest.Artiestid">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@artiest.Artiestid">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@artiest.Artiestid">Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
 
+@*// Page's*@
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
 <script>
-    function searchForRecord()
-    {
+    function searchForRecord() {
         let filter = event.target.value.toUpperCase();
         let rows = document.querySelector("#RecordTable tbody").rows;
         for (let i = 0; i < rows.length; i++) {
@@ -71,5 +91,5 @@
                 rows[i].style.display = "none";
             }
         }
-    } 
+    }
 </script>

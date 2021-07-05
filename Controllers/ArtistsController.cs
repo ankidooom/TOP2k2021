@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using testje_amk.Models;
+using X.PagedList;
+using X.PagedList.Mvc.Core;
+using X.PagedList.Web.Common;
 
 namespace testje_amk.Controllers
 {
@@ -19,17 +22,25 @@ namespace testje_amk.Controllers
         }
 
         // GET: Artists
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, int? page)
         {
-            var Artiest = from m in _context.Artiests
-                        select m;
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CurrentFilter = searchString;
 
-            if (!string.IsNullOrEmpty(searchString))
+            // pagina's
+            var pageNumber = page ?? 1;
+            List<Artiest> artists = await _context.Artiests.ToListAsync();
+            
+            
+            // Zoek balk dus zoeken van data
+            var artiesten = from s in _context.Artiests
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                Artiest = Artiest.Where(s => s.Naam.Contains(searchString));
+                artiesten = artiesten.Where(s => s.Naam.Contains(searchString)
+                                       || s.Naam.Contains(searchString));
             }
-
-            return View(await Artiest.ToListAsync());
+            return View(artists.ToPagedList(pageNumber, 50));
         }
 
         // GET: Artists/Details/5
