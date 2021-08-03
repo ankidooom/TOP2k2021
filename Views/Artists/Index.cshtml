@@ -35,6 +35,7 @@
             </tr>
             </thead>
             <tbody>
+<<<<<<< Updated upstream
             @foreach (var artiest in Model)
             {
                 <tr>
@@ -53,6 +54,25 @@
                 </tr>
             }
                 
+=======
+                @foreach (var artiest in Model)
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => artiest.Naam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => artiest.Songs) 
+                            [0-10000]
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@artiest.Artiestid">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@artiest.Artiestid">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@artiest.Artiestid">Delete</a>
+                        </td>
+                    </tr>
+                }
+>>>>>>> Stashed changes
             </tbody>
         </table>
     </div>
