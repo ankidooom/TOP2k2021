@@ -63,6 +63,7 @@ namespace testje_amk.Controllers
         }
 
         // GET: Artists/Create
+        //Authorizer gebruikt zodat alleen Admin bij deye functie kan komen 
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {

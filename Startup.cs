@@ -72,7 +72,7 @@ namespace testje_amk
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Artists}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
